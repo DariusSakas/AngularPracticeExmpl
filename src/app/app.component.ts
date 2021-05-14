@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component } from '@angular/core';
 
 @Component({
@@ -12,11 +13,23 @@ export class AppComponent {
   obj = { a: 1, b: 3 };
   img = 'https://d29fhpw069ctt2.cloudfront.net/icon/image/38737/preview.svg';
 
+  inputValue = '';
+
   constructor() {
-    setTimeout(() => {
-      console.log('Time out is over');
-      this.img =
-        'https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_angular_icon_130754.png';
-    }, 5000);
+    // setTimeout(() => {
+    //   console.log('Time out is over');
+    //   this.img =
+    //     'https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_angular_icon_130754.png';
+    // }, 5000);
+  }
+  onInput(event: KeyboardEvent) {
+    console.log('Event', event);
+    this.inputValue = (<HTMLInputElement>event.target).value;
+  }
+  onClick() {
+    console.log('Click');
+  }
+  onBlur(str: string) {
+    this.inputValue = str;
   }
 }
